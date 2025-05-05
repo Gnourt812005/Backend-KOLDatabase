@@ -1,0 +1,16 @@
+
+fastapi
+uvicorn
+databases 
+asyncpg
+
+python-dotenv
+pydantic_settings
+sqlalchemy
+pgvector 
+psycopg2
+redis
+requests
+colorlog
+
+sentence-transformers
