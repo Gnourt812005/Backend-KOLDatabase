@@ -2,7 +2,7 @@ from pydantic_settings import BaseSettings
 from pydantic import ConfigDict
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str = "viton-backend"
+    PROJECT_NAME: str = "KOL-backend"
     DATABASE_URL : str
     # REDIS_HOST : str
     # REDIS_PORT : str
