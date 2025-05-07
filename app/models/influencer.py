@@ -3,7 +3,12 @@ from pgvector.sqlalchemy import Vector
 from sqlalchemy import text
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
+from sqlalchemy.orm import relationship
+
 from app.core.database import Base 
+
+from app.models.influencer_field import InfluencerField
+from app.models.influencer_platform import InfluencerPlatform
 
 class Influencer(Base):
     __tablename__ = "influencer"
@@ -20,3 +25,7 @@ class Influencer(Base):
     __table_args__ = (
         PrimaryKeyConstraint("id", name="pk_influencer"),
     )
+
+    rlts_influencer_field = relationship("InfluencerField", foreign_keys=[InfluencerField.influencer_id], back_populates="rlts_influencer")
+    rlts_influencer_platform = relationship("InfluencerPlatform", foreign_keys=[InfluencerPlatform.influencer_id], back_populates="rlts_influencer")
+

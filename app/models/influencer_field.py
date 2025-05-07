@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Boolean, PrimaryKeyConstraint, ForeignKeyConstraint
 from sqlalchemy import text
 from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.orm import relationship
 from app.core.database import Base 
 
 class InfluencerField(Base):
@@ -15,3 +16,7 @@ class InfluencerField(Base):
         ForeignKeyConstraint(["field_id"], ["field.id"], name="fk_influencer_field_field_id"),
         
     )
+
+    rlts_influencer = relationship("Influencer", foreign_keys=influencer_id, back_populates="rlts_influencer_field")
+    rlts_field = relationship("Field", foreign_keys=field_id, back_populates="rlts_influencer_field")
+

@@ -1,6 +1,7 @@
 from sqlalchemy import Column, String, Integer, Boolean, PrimaryKeyConstraint, ForeignKeyConstraint, CheckConstraint
 from sqlalchemy import text
 from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.orm import relationship
 from app.core.database import Base 
 
 class InfluencerPlatform(Base):
@@ -19,3 +20,6 @@ class InfluencerPlatform(Base):
         
         CheckConstraint("followers_count >= 0", name="ck_influencer_platform_followers_count"),
     )
+
+    rlts_influencer = relationship("Influencer", foreign_keys=influencer_id, back_populates="rlts_influencer_platform")
+    rlts_platform = relationship("Platform", foreign_keys=platform_id, back_populates="rlts_influencer_platform")

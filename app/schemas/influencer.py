@@ -19,12 +19,14 @@ class InfluencerUpdate(BaseModel):
     description_vector: Optional[List[float]] = None 
 
 class InfluencerOut(BaseModel):
-    name: str
+    id: Optional[UUID] = None 
+    name: Optional[str] = None 
     location: Optional[str] = None 
-    description: Optional[str] = None 
-    id: UUID
-    created_at : date
-    updated_at : date 
+    description: Optional[str] = None
+    field : Optional[List[str]] = None 
+    platform : Optional[List[str]] = None
+    created_at : Optional[date] = None 
+    updated_at : Optional[date] = None  
 
     model_config = ConfigDict(from_attributes=True) 
 
