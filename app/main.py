@@ -6,7 +6,8 @@ from app.core.config import settings
 from app.core.database import engine, Base
 
 # from app.api.v1 import router_v1
-from app.api.v2 import router_v2
+# from app.api.v2 import router_v2
+from app.api.v3 import router_v3
 import time 
 import logging
 setup_logger()
@@ -32,14 +33,15 @@ app = FastAPI(
 origins = []
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,           # Allows requests from the specified origins
+    allow_origins=["*"],           # Allows requests from the specified origins
     allow_credentials=True,          # Allows cookies and credentials
     allow_methods=["*"],             # Allows all HTTP methods (GET, POST, etc.)
     allow_headers=["*"],             # Allows all headers
 )
 
 # app.include_router(router_v1, prefix="/api/v1")
-app.include_router(router_v2, prefix="/api/v2")
+# app.include_router(router_v2, prefix="/api/v2")
+app.include_router(router_v3, prefix="/api/v3")
 
 @app.middleware("http")
 async def log_request(request : Request, call_next):
