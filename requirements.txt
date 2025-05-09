@@ -8,7 +8,7 @@ python-dotenv
 pydantic_settings
 sqlalchemy
 pgvector 
-psycopg2
+psycopg2-binary 
 redis
 requests
 colorlog

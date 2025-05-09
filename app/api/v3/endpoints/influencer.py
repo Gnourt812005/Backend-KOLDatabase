@@ -48,7 +48,7 @@ async def get_all(db: Session = Depends(get_database)):
 
     return response
 
-@router.get("/influencer/{id}")#, response_model=InfluencerOut, response_model_exclude_unset=True)
+@router.get("/influencer/{id}", response_model=InfluencerOut, response_model_exclude_unset=True)
 async def get(id : UUID, db: Session = Depends(get_database)):
     try:
         data = influencer_crud.get(db=db, id=id)
